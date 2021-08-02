@@ -13,11 +13,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import dump_svmlight_file
 import joblib
 from sklearn.metrics import confusion_matrix,accuracy_score,recall_score,precision_score,f1_score
-import matplotlib.pyplot as plt 
 
-#x_old = pd.read_csv('C:/Users/Ameer/Documents/xgboost/twitter.csv')
-#y_old = pd.read_csv('C:/Users/Ameer/Documents/xgboost/person.csv')
-features = pd.read_csv('/Users/chempakaseri/Spyder/xgboost/muhaimin/Dataset/jit-sdp/bugzilla_remove.csv')
+features = pd.read_csv("C:/Users/Ameer/Documents/sdp/data/bugzilla_v1.csv")
 x, y = features.iloc[:,:-1],features.iloc[:,-1]
 
 
@@ -49,7 +46,6 @@ num_round = 20 # iteration
 ##  ------------------------ numpy array ------------------------------------
 #   training and testing - numpy metrics
 bst = xgb.train(param, dtrain, num_round)
-bst.dump_model('/Users/chempakaseri/Spyder/xgboost/muhaimin/3.txt') ## to see how the model looks
 preds = bst.predict(dtest)
 
 #   extracting the most confident predictions
@@ -57,8 +53,6 @@ best_preds = np.asarray([np.argmax(line) for line in preds])
 
 
 print ("Numpy array precision: ", precision_score(y_test, best_preds, average='weighted'))
-#   UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-#  _warn_prf(average, modifier, msg_start, len(result))
 print ("Numpy array accuracy: ", accuracy_score(y_test, best_preds))
 print ("Numpy array recall: ", recall_score(y_test, best_preds, average='weighted'))
 print ("Numpy array f-measure: ", f1_score(y_test, best_preds, average='weighted'))
@@ -97,21 +91,21 @@ print(classification_report(y_test, y_pred, target_names=['Class 1', 'Class 2'])
 ##  ------------------------ svm file ----------------------------------------
 
 #   training and testing - svm file
-bst_svm = xgb.train(param, dtrain_svm), num_round
-preds = bst.predict(dtest_svm)
+#bst_svm = xgb.train(param, dtrain_svm), num_round
+#preds = bst.predict(dtest_svm)
 
 #   extracting most confident predictions
-best_preds_svm = [np.argmax(line) for line in preds]
-print ("SVM file precision:", precision_score(y_test, best_preds_svm, average='macro'))
+#best_preds_svm = [np.argmax(line) for line in preds]
+#print ("SVM file precision:", precision_score(y_test, best_preds_svm, average='macro'))
 
 
 ##  ------------------------ dump the model ----------------------------------
-bst.dump_model('/Users/chempakaseri/Spyder/xgboost/muhaimin/Model/dump.raw.txt')
+#bst.dump_model('/Users/chempakaseri/Spyder/xgboost/muhaimin/Model/dump.raw.txt')
 #bst_svm.dump_model('dump_svm.raw.txt')
 
 ##  -------------------- save the model for later ----------------------------
 #joblib.dump(bst,open('/Users/chempakaseri/Spyder/xgboost/0611/bst_model.pkl','wb'))
-bst.save_model('/Users/chempakaseri/Spyder/xgboost/.pkl')
+#bst.save_model('/Users/chempakaseri/Spyder/xgboost/.pkl')
 #joblib.dump(bst_svm,'bst_svm_model.pkl', compress=True)
 
 
