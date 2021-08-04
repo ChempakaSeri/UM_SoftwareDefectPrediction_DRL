@@ -7,7 +7,7 @@ import warnings
 from sklearn.utils import shuffle
 warnings.filterwarnings('always')
 
-features = pd.read_csv("C:/Users/Ameer/Documents/sdp/data/mozilla_v1.csv")
+features = pd.read_csv("C:/Users/Ameer/Documents/sdp/data/postgres_v1.csv")
 features = shuffle(features)
 x, y = features.iloc[:,:-1],features.iloc[:,-1]
 
