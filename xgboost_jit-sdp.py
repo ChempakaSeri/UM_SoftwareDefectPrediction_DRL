@@ -14,7 +14,7 @@ from sklearn.datasets import dump_svmlight_file
 import joblib
 from sklearn.metrics import confusion_matrix,accuracy_score,recall_score,precision_score,f1_score
 
-features = pd.read_csv("C:/Users/Ameer/Documents/sdp/data/bugzilla_v1.csv")
+features = pd.read_csv("C:/Users/Ameer/Documents/sdp/data/platform_v1.csv")
 x, y = features.iloc[:,:-1],features.iloc[:,-1]
 
 
@@ -52,8 +52,8 @@ preds = bst.predict(dtest)
 best_preds = np.asarray([np.argmax(line) for line in preds])
 
 
-print ("Numpy array precision: ", precision_score(y_test, best_preds, average='weighted'))
 print ("Numpy array accuracy: ", accuracy_score(y_test, best_preds))
+print ("Numpy array precision: ", precision_score(y_test, best_preds, average='weighted'))
 print ("Numpy array recall: ", recall_score(y_test, best_preds, average='weighted'))
 print ("Numpy array f-measure: ", f1_score(y_test, best_preds, average='weighted'))
 
