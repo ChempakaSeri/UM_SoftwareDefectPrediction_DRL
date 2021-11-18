@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "..\\sdp"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\UM_FunctionalReqClassification_API"
+		},
+		{
+			"path": "..\\emotion_model"
+		}
+	],
+	"settings": {}
+}

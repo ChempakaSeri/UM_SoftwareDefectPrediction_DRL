@@ -7,7 +7,7 @@ import warnings
 from sklearn.utils import shuffle
 warnings.filterwarnings('always')
 
-features = pd.read_csv("C:/Users/Ameer/Documents/sdp/data/bugzilla_v1.csv")
+features = pd.read_csv("C:/Users/Ameer/Desktop/cuya/epn_v3.csv")
 features = shuffle(features)
 x, y = features.iloc[:,:-1],features.iloc[:,-1]
 
@@ -29,4 +29,3 @@ print ("Numpy array f-measure: ", f1_score(y_test, best_preds, average='weighted
 confusion = confusion_matrix(y_test, y_pred)
 print('Confusion Matrix\n')
 print(confusion)
-
